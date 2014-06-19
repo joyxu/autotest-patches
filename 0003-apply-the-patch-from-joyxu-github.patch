@@ -1,0 +1,36 @@
+From 228c833b8db33a7396da8b8a487304fc0d2de79b Mon Sep 17 00:00:00 2001
+From: Joy <xuwei04@gmail.com>
+Date: Thu, 19 Jun 2014 17:32:20 +0800
+Subject: [PATCH] apply the patch from joyxu github
+
+---
+ contrib/install-autotest-server.sh | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/contrib/install-autotest-server.sh b/contrib/install-autotest-server.sh
+index 8b10493..ba36aa0 100755
+--- a/contrib/install-autotest-server.sh
++++ b/contrib/install-autotest-server.sh
+@@ -343,6 +343,8 @@ else
+        git pull
+     fi
+ fi
++wget -c https://raw.githubusercontent.com/joyxu/autotest-patches/master/0001-remove-python-autopep8-dependence-and-wsgi.patch
++git apply 0001-remove-python-autopep8-dependence-and-wsgi.patch
+ 
+ print_log "INFO" "Initializing and updating tests to the latest $AUTOTEST_TESTS_BRANCH"
+ cd $ATHOME
+@@ -350,6 +352,10 @@ git submodule init
+ git submodule update --recursive
+ cd $ATHOME/client/tests
+ git checkout $AUTOTEST_TESTS_BRANCH
++
++wget -c https://raw.githubusercontent.com/joyxu/autotest-patches/master/0002-add-phoronixbench-and-fixed-hackbench-aiostress-comp.patch
++git apply 0002-add-phoronixbench-and-fixed-hackbench-aiostress-comp.patch
++
+ cd $ATHOME/client/tests/virt
+ git checkout $AUTOTEST_TESTS_BRANCH
+ cd $ATHOME/server/tests
+-- 
+1.8.1.2
+
