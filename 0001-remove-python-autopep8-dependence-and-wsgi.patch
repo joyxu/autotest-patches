@@ -1,0 +1,39 @@
+From 660bc5da5e5b47ccd0a9891b5f12991e1eb90ca8 Mon Sep 17 00:00:00 2001
+From: Joy <xuwei04@gmail.com>
+Date: Thu, 19 Jun 2014 16:50:53 +0800
+Subject: [PATCH 1/2] remove python-autopep8 dependence and wsgi
+
+Signed-off-by: Joy <xuwei04@gmail.com>
+---
+ apache/conf/django-directives | 2 +-
+ frontend/pkgdeps.py           | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/apache/conf/django-directives b/apache/conf/django-directives
+index 8605288..be67d22 100644
+--- a/apache/conf/django-directives
++++ b/apache/conf/django-directives
+@@ -45,7 +45,7 @@ RewriteEngine On
+        Options +ExecCGI
+     </LocationMatch>
+ 
+-    WSGISocketPrefix run/wsgi
++    #WSGISocketPrefix run/wsgi
+     WSGIDaemonProcess autotestapache processes=10 threads=1
+     WSGIProcessGroup autotestapache
+     WSGIPassAuthorization On
+diff --git a/frontend/pkgdeps.py b/frontend/pkgdeps.py
+index 68da92c..f83e960 100644
+--- a/frontend/pkgdeps.py
++++ b/frontend/pkgdeps.py
+@@ -75,7 +75,6 @@ UBUNTU_PKGS = [
+     'makepasswd',
+     'mysql-server',
+     'openjdk-7-jre-headless',
+-    'python-autopep8',
+     'python-crypto',
+     'python-django',
+     'python-django-south',
+-- 
+1.8.1.2
+
