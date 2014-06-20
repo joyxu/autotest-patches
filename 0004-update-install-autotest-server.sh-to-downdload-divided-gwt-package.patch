@@ -1,0 +1,18 @@
+diff --git a/contrib/install-autotest-server.sh b/contrib/install-autotest-server.sh
+index ba36aa0..dc2e4cf 100755
+--- a/contrib/install-autotest-server.sh
++++ b/contrib/install-autotest-server.sh
+@@ -397,6 +397,13 @@ fi
+ 
+ build_external_packages() {
+ print_log "INFO" "Running autotest dependencies build (may take a while since it might download files)"
++mkdir -p $ATHOME/ExternalSource
++cd $ATHOME/ExternalSource
++wget -c https://raw.githubusercontent.com/joyxu/autotest-patches/master/ExternalSource/atfork-0.1.2.zip
++wget -c https://raw.githubusercontent.com/joyxu/autotest-patches/master/ExternalSource/gwt-2.5.1.zip000
++wget -c https://raw.githubusercontent.com/joyxu/autotest-patches/master/ExternalSource/gwt-2.5.1.zip001
++cat gwt-2.5.1.zip* > gwt-2.5.1.zip
++cd -
+ cat << EOF | su - autotest >> $LOG 2>&1
+ $ATHOME/utils/build_externals.py
+ EOF
